@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/index.css') }}" >
+    <title>PoWLoL</title>
+</head>
+<body>
+    <header>
+        <div class="banner">
+            <h1>PoW LoL</h1>
+            <h2>Probability of Winning in League of Legends</h2>
+        </div>
+    </header>
+    
+    <h1 class="title">Search for a Player</h1>
+    <div class="search_player_div">
+        <form method="post" action="/" class="search_form">
+            <datalist id="servers">
+                <option value="NA1"></option>
+                <option value="EUW1"></option>
+                <option value="LA1"></option>
+                <option value="LA2"></option>
+                <option value="BR1"></option>
+            </datalist>
+            <div class="input_field">
+                <input type="text" id="name" name="name" placeholder="Player name" required>
+                <input list="servers" id="server" name="server" placeholder="Server" required>
+            </div>
+            <div class="buttons">
+                <!-- <input type="submit" name="submit" value="Last Matches" class="last_matches_button"> -->
+                <input type="submit" name="submit" value="Live Game" class="live_game_button">
+            </div>
+        </form>
+    </div>
+    <div class="top_ad_div">
+        <div class="top_ad">
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7054630560373365"
+            crossorigin="anonymous"></script>
+            <!-- square -->
+            <ins class="adsbygoogle"
+                style="display:block;width:700px;height:90px"
+                data-ad-client="ca-pub-7054630560373365"
+                data-ad-slot="6236482468"
+                data-ad-format="horizontal"
+                data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </div>
+    {% if error_message %}
+        <p class="error-message">{{ error_message }}</p>
+    {% endif %}
+
+    {% if games %}
+        <h2 class="games-header">Games</h2>
+        <ul class="games-list">
+            {% for game in games %}
+                <li>
+                    <strong>Game #{{ loop.index }}:</strong>
+                    <ul>
+                        {% for champion in game[0].values() %}
+                            <li>{{ champion }}</li>
+                        {% endfor %}
+                    </ul>
+                    <p>Winner: {{ game[1] }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    {% if live_game %}
+        {% if not live_game["participants"] %}
+            <p class="error-message">The player is not in a current match</p>
+        {% else %}
+            <div class="live_game_div">
+                <h2 class="live-game-header">Live Game Match</h2>
+                <form action="/predict" method="POST" class="predict_form">
+                    <input type="hidden" name="playerpuuid" value="{{ player_puuid }}">
+                    <input type="hidden" name="server" value="{{ server }}">
+                    <input type="hidden" name="live_game" value="{{ live_game }}">
+                    <input type="submit" value="Predict Winner" class="predict-winner-button">
+                </form>
+                <table class="live-game-table">
+                    <tr>
+                        <th style="background-color: #222663;">Blue Team Champions</th>
+                        <th style="background-color: #954141;">Red Team Champions</th>
+                    </tr>
+
+                    {% for player_index in range(5) %}
+                        <tr>
+                            <td>{{ champions_id_to_name[live_game["participants"][player_index]["championId"]] }}</td>
+                            <td>{{ champions_id_to_name[live_game["participants"][player_index + 5]["championId"]] }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        {% endif %}
+    {% endif %}
+    {% if winner %}
+        <div class="prediction">
+            <div class="prediction_div" style="background-color:  {{  'rgb(97, 146, 189)' if winner == 'blue' else 'rgb(191, 82, 82)' }}">
+                <h2 class="prediction-header">Prediction</h2>
+                <p class="prediction-text">The predicted winner is: {{ winner }} with probability of {{ probabilidad }}.</p>
+                <p class="prediction-text">The prediction was made by a RandomForestClassifier based on the following input data from the last 5 games of the players:</p>
+                {% for key in input_data.keys() %}
+                    <p class="prediction-text">{{ key }}: {{ input_data[key] }}</p>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+</body>
+</html>

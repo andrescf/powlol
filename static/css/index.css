@@ -1,0 +1,231 @@
+h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 1rem;
+  }
+  
+  form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  
+  label {
+    flex-basis: 30%;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 0.25rem;
+  } 
+  
+  .error-message {
+    color: rgb(255, 255, 255); /* Text color */
+    background-color: rgb(63, 1, 1); /* Background color */
+    padding: 10px; /* Padding around text */
+    border-radius: 5px; /* Rounded corners */
+    text-align: center; /* Center-align text */
+    width: 80%; /* Set width of the box */
+    margin: 0 auto; /* Center horizontally */
+    margin-top: 20px; /* Top margin */
+    box-sizing: border-box; /* Include padding in width */
+  }
+
+  
+  .games-header {
+    margin-top: 1rem;
+  }
+  
+  .games-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .games-list li {
+    margin-bottom: 0.5rem;
+  }
+  
+  .games-list li strong {
+    font-weight: bold;
+  }
+  
+  .live-game-header {
+    margin-top: 2rem;
+    text-align: center;
+    color: rgb(223, 208, 184);
+  }
+  
+  .live-game-table {
+    border-collapse: collapse;
+    width: 30%;
+    margin-top: 2rem;
+  }
+
+  .live_game_div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .live-game-table td {
+    border: 1px solid rgb(21, 52, 72);
+    padding: 8px;
+    text-align: left;
+    background-color:rgb(223, 208, 184);
+    color: rgb(21, 52, 72);
+  }
+  
+  .live-game-table th {
+    border: 1px solid rgb(21, 52, 72);
+    padding: 8px;
+    text-align: left;
+    color: rgb(223, 208, 184);
+  }
+  
+  .predict-winner-button {
+    margin-top: 1rem;
+    padding: 10px;
+    color: rgb(21, 52, 72);
+    border: 1px solid rgb(21, 52, 72);
+    background: rgb(148, 137, 121);
+    border-radius: 10px;
+    transition: all 0.4s ease;
+  }
+  .predict-winner-button:hover {
+    color: rgb(148, 137, 121);
+    background: rgb(21, 52, 72);
+  }
+
+  .banner {
+    background-color:rgb(21, 52, 72); /* Background color of the banner */
+    padding: 20px; /* Padding inside the banner */
+  }
+
+  /* Style the heading elements */
+  .banner h1, .banner h2 {
+    color:rgb(223, 208, 184);
+    text-align: center; /* Center-align text */
+    margin: 0; /* Remove margin for the heading elements */
+  }
+
+  /* Make the banner cover 100% width */
+  .banner {
+      width: 100%; /* Set the width to 100% */
+      box-sizing: border-box; /* Include padding and border in the width calculation */
+  }
+
+  body {
+    background-color:rgb(60, 91, 111);
+    align-items: center;
+    margin: 0;
+  }
+
+  .title{
+    color:rgb(223, 208, 184);
+    text-align: center;
+    padding-top: 50px;
+  }
+
+  .search_player_div {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .input_field {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .top_ad_div {
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  .top_ad {
+    display: flex;
+    justify-content: center;
+  }
+
+
+  .predict_form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .prediction_div {
+    display: flex;
+    flex-direction: column;
+    background: aliceblue;
+    width: 30%;
+    align-items: center;
+    border-radius: 10px;
+  }
+
+  .prediction {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    height: auto !important;
+    justify-content: center;
+    gap: 10rem;
+    margin: 5rem;
+  }
+
+  .last_matches_button {
+    color: rgb(21, 52, 72);
+    background-color: rgb(148, 137, 121);
+    padding: 10px;
+    border: 1px solid rgb(21, 52, 72);
+    border-radius: 10px;
+    transition: all 0.4s ease;
+  }
+  .last_matches_button:hover {
+    color: rgb(148, 137, 121);
+    background: rgb(21, 52, 72);
+  }
+
+  .live_game_button {
+    color: rgb(21, 52, 72);
+    background-color: rgb(148, 137, 121);
+    padding: 10px;
+    border: 1px solid rgb(21, 52, 72);
+    border-radius: 10px;
+    transition: all 0.4s ease;
+  }
+  .live_game_button:hover {
+    color: rgb(148, 137, 121);
+    background: rgb(21, 52, 72);
+  }
+
+  /* edit the input fields of the div of class input_field */
+  .input_field input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid rgb(21, 52, 72);
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: rgb(148, 137, 121);
+    color: rgb(21, 52, 72);
+  }
+
+  /* change the color of the text of the placeholder */
+  .input_field input::placeholder {
+    color: rgb(21, 52, 72);
+  }
+
+  .prediction-text {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #000000;
+    margin: 1rem;
+  }
