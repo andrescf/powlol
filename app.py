@@ -3,20 +3,15 @@ from flask_sqlalchemy import SQLAlchemy
 from scripts.lol_api_fetches import fetch_player_puuid, fetch_live_game, fetch_live_game_data, fetch_last_games, champions_id_to_name
 import numpy as np
 import pickle
-from dotenv import load_dotenv
 import os
 import json
 import ast
-
-load_dotenv()
 
 # Import the API key from the environment variables
 RIOT_API_KEY = os.getenv("RIOT_API_KEY")
 
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///players.db'
-db.init_app(app)
 
 rfc = None
 with open('pkl/rfc.pkl', 'rb') as file:
